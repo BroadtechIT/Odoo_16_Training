@@ -1,0 +1,117 @@
+<odoo>
+    <data>
+       
+
+        <record model="ir.ui.view" id="bt_s2u_shopify_instance_form">
+            <field name="inherit_id" ref="s2u_shopify.instance_form"/>
+            <field name="model">s2u.shopify.instance</field>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group[2]" position="after">
+                	 <button name="do_get_shopify_product" type="object" string="Import Product From Shopify" class="oe_highlight"/>
+                	 <button name="process_shopify_product_data_queue" type="object" string="Import Product Data Shopify" class="oe_highlight"/>
+                	 <button name="do_get_shopify_customer" type="object" string="Import Customer From Shopify" class="oe_highlight" invisible="1"/>
+                </xpath>
+                
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="pricelist_id"/>
+                    <field name="fiscal_position_id"/>
+                    <field name="journal_id"/>
+                    <field name="paypal_journal_id"/>
+                    <field name="sales_team_id"/>
+                    <field name="location_ids" widget="many2many_tags" domain="[('usage', '=', 'internal')]"/>
+                    <field name="usa_customer_warehouse_id"/>
+                    <field name="ca_customer_warehouse_id"/>
+                    
+                </xpath>
+            </field>
+        </record>
+        
+        
+        
+        
+        
+        
+        <record model="ir.ui.view" id="bt_s2u_shopify_product_template_mapping_form">
+            <field name="inherit_id" ref="s2u_shopify.product_template_mapping_form"/>
+            <field name="model">s2u.shopify.mapping.template</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='do_action_inventory']" position="after">
+                	 <button name="do_update_product_price" type="object" string="Export Product Price" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//field[@name='shopify_location_id']" position="after">
+                	 <field name="last_sync_done" />
+                </xpath>
+            </field>
+        </record>
+        
+        
+        
+        
+        <record model="ir.ui.view" id="bt_shopify_view_product_product_form_inherit">
+            <field name="inherit_id" ref="s2u_shopify.shopify_view_product_product_form_inherit"/>
+            <field name="model">product.product</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='shopify_id']" position="after">
+                    <field name="shopify_product_id" />
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="bt_shopify_view_shopify_view_product_template_form_inherit">
+            <field name="inherit_id" ref="s2u_shopify.shopify_view_product_template_form_inherit"/>
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='shopify_id']" position="after">
+                    <field name="instance_id" />
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="bt_shopify_product_variant_easy_edit_view_inherit">
+            <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+            <field name="model">product.product</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='standard_price']" position="before">
+                    <field name="shopify_product_price" />
+                </xpath>
+            </field>
+        </record>
+		
+		<record model="ir.ui.view" id="bt_s2u_shopify_view_order_form_inherit">
+            <field name="inherit_id" ref="s2u_shopify.view_order_form"/>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='shopify_id']" position="after">
+                    <field name="carrier_tracking_ref"/>
+                </xpath>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="bt_s2u_shopify_view_partner_form_inherit">
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='sale']/field[@name='user_id']" position="after">
+                    <field name="shopify_id" string="Shopify ID"/>
+                </xpath>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="bt_s2u_shopify_view_res_partner_filter_inherit">
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='inactive']" position="after">
+                    <filter string="Shopify Customer" name="shopify_id" domain="[('shopify_id', '!=', False)]"/>
+                </xpath>
+            </field>
+        </record>
+        
+        
+        
+        
+        
+    </data>
+</odoo>
