@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bt_s2u_shopify_product_data_queue_user,bt_s2u_shopify.product.data.queue,model_bt_s2u_shopify_product_data_queue,,1,1,1,1
+access_bt_s2u_shopify_synch_product_shopify_user,bt_s2u_shopify.synch.product.shopify,model_bt_s2u_shopify_synch_product_shopify,,1,1,1,1
+access_export_product_product,access_export_product_product,model_bt_s2u_shopify_export_product_product,,1,1,1,1

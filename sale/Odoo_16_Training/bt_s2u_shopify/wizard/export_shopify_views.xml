@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="bt_s2u_shopify_synch_product_shopify_form_view" model="ir.ui.view">
+            <field name="name">Invoice Orders</field>
+            <field name="model">bt_s2u_shopify.synch.product.shopify</field>
+            <field name="arch" type="xml">
+                <form string="Synch Product Price To Shopify">
+                    <h4>
+                        Do you want synch the product price to shopify?
+                    </h4>
+                    
+                    <footer>
+                        <button name="export_product_price" string="Synch" type="object" class="btn-primary oe_highlight"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_bt_s2u_shopify_synch_product_shopify_form_view" model="ir.actions.act_window">
+            <field name="name">Synch Product Price To Shopify</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bt_s2u_shopify.synch.product.shopify</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <!-- TODO: check if we need this -->
+            <field name="binding_model_id" ref="product.model_product_template" />
+            <field name="binding_view_types">form,list</field>
+        </record>
+        
+        
+        
+        
+        
+        
+        	
+	<record id="bt_s2u_shopify_export_product_product_view_form" model="ir.ui.view">
+        <field name="name">bt_s2u_shopify.export.product.product.view.form</field>
+        <field name="model">bt_s2u_shopify.export.product.product</field>
+        <field name="arch" type="xml">
+            <form string="Export To Shopify">
+                <group>
+                	<field name="instance_id" invisible="1"/>
+                </group> 
+                <div>
+	                <h2>Shopify Export</h2>
+	                <p>This wizard will export selected product to shopify.Please click the Export button</p> 
+	                
+                </div>
+                <footer>
+                     <button name="export_product_template" string="Export" type="object" class="btn-primary"/>
+                     <button special="cancel" string="Cancel" type="object" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+
+      <record id="action_bt_s2u_shopify_export_product_product_list" model="ir.actions.act_window">
+            <field name="name">Export To Shopify</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bt_s2u_shopify.export.product.product</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <!-- TODO: check if we need this -->
+            <field name="binding_model_id" ref="sale.model_product_template" />
+            <field name="binding_view_types">form,list</field>
+        </record>
+	
+    <record id="action_bt_s2u_shopify_export_product_product" model="ir.actions.act_window">
+        <field name="name">Export To Shopify</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bt_s2u_shopify.export.product.product</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="bt_s2u_shopify_export_product_product_view_form"/>
+        <field name="target">new</field>
+    </record>
+    
+   <!--  <menuitem name="Export To Shopify"
+            id="menu_action_bt_s2u_shopify_export_product_product"
+            parent="s2u_shopify.menu_shopify_products" sequence="1004"
+            action="action_bt_s2u_shopify_export_product_product"/> -->
+            
+    
+    
+
+</odoo>

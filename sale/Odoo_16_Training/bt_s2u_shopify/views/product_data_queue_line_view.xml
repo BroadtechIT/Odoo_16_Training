@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record id="bt_s2u_shopify_product_data_queue_tree_view" model="ir.ui.view">
+            <field name="name">Shopify Product Data Queue</field>
+            <field name="model">bt_s2u_shopify.product.data.queue</field>
+            <field name="arch" type="xml">
+                <tree string="Shopify Product Data Queue" >
+                    <field name="name"/>
+                    <field name="product_data_id"/>
+                    <field name="last_process_date"/>
+                    <field name="shopify_instance_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bt_s2u_shopify_product_data_queue_search_view" model="ir.ui.view">
+            <field name="name">Shopify Product Data Queue Search View</field>
+            <field name="model">bt_s2u_shopify.product.data.queue</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Shopify Product Data Queue">
+                    <field name="name"/>
+                    <field name="product_data_id"/>
+                    <field name="last_process_date"/>
+                    <field name="shopify_instance_id"/>
+                    <field name="state"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="bt_s2u_shopify_product_data_queue_form_view" model="ir.ui.view">
+            <field name="name">Shopify Product Data Queue</field>
+            <field name="model">bt_s2u_shopify.product.data.queue</field>
+            <field name="arch" type="xml">
+                <form string="Shopify Product Data Queue">
+                    <header>
+                        <button name="shopify_import_update_product" string="Import/Update"
+                                class="oe_highlight" type="object"
+                                />
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+			                    <field name="product_data_id"/>
+                            </group>
+                            <group>
+                            	<field name="last_process_date"/>
+			                    <field name="shopify_instance_id"/>
+                            </group>
+                        </group>
+                        
+
+                        <notebook>
+                            <page string="Product Data">
+                                <group>
+                                    <group>
+                                        <field name="synced_product_data" readonly="1" nolabel="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+
+		
+		<record id="action_bt_s2u_shopify_product_data_queue_form_view" model="ir.actions.act_window">
+            <field name="name">Shopify Product Data Queue</field>
+            <field name="res_model">bt_s2u_shopify.product.data.queue</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="bt_s2u_shopify_product_data_queue_tree_view" />
+        </record>
+        
+        
+        <menuitem id="menu_bt_s2u_shopify_product_data_queue" name="Shopify Product Data Queue"
+                  parent="s2u_shopify.menu_shopify_products" sequence="500"
+                  action="action_bt_s2u_shopify_product_data_queue_form_view"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        
+        <record id="ir_cron_process_shopify_product_data_queue_action" model="ir.cron">
+            <field name="name">Process Shopify Product Data Queue</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model_id" ref="model_s2u_shopify_instance"/>
+            <field name="active" eval="False"/>
+            <field name="state">code</field>
+            <field name="code">model.process_shopify_product_data_queue()</field>
+        </record>
+        
+        
+        <record id="ir_cron_export_shopify_product_price_action" model="ir.cron">
+            <field name="name">Export Shopify Product Price</field>
+            <field name="interval_number">15</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model_id" ref="model_s2u_shopify_mapping_template"/>
+            <field name="active" eval="False"/>
+            <field name="state">code</field>
+            <field name="code">model.export_shopify_product_price()</field>
+        </record>
+        
+    </data>
+</openerp>
